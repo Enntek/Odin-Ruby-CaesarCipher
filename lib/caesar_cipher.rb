@@ -1,7 +1,7 @@
 # Odin Ruby Caesar Cipher Project
 # https://www.theodinproject.com/lessons/ruby-caesar-cipher
 
-def caesar_encrypt(string, shift)
+def caesar_encrypt(string, shift) 
   
   shift %= 26
   
