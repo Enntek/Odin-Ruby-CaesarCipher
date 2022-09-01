@@ -1,19 +1,33 @@
 # spec/caesar_cipher_spec.rb
+# frozen_string_literal: true
+
 require './lib/caesar_cipher.rb'
 
-describe 'caesar_cipher' do
-  it 'returns same string if shift is 0' do
-    expect(caesar_cipher('hello world', 0).to eql 'hello world'
-  end
+# 'context' is superfluous here, for practice only
+describe CaesarCipher do
+  subject { CaesarCipher.new }
 
-  it 'returns a string with a shift of 1' do
-    expect(caesar_cipher('a', 1)).to eql 'b'
+  describe '#caesar_cipher' do
+    context 'we instantiate CaesarCipher and send caesar_cipher message' do
+      it 'returns same char if shift is 0' do
+        expect(subject.caesar_cipher('a', 0)).to eql 'a'
+      end
+
+      it "returns 'b' if given 'a' and shift of 1" do
+        expect(subject.caesar_cipher('a', 1)).to eql 'b'
+      end
+
+      it "returns 'bb' if given 'aa' and shift of 1" do
+        expect(subject.caesar_cipher('aa', 1)).to eql 'bb'
+      end
+
+      it "returns 'aa' if given 'zz' with shift of 1" do
+        expect(subject.caesar_cipher('zz', 1)).to eql 'aa'
+      end
+
+      it "returns 'a a!' if given 'z z!' with shift of 1" do
+        expect(subject.caesar_cipher('z z!', 1)). to eql 'a a!'
+      end
+    end
   end
 end
-
-# describe '#add' do
-#   it 'returns the sum of two numbers' do
-#     calculator = Calculator.new
-#     expect(calculator.add(5, 2)).to eql(7)
-#   end
-# end
