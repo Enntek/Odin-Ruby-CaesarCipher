@@ -28,6 +28,14 @@ describe CaesarCipher do
       it "returns 'a a!' if given 'z z!' with shift of 1" do
         expect(subject.caesar_cipher('z z!', 1)). to eql 'a a!'
       end
+
+      it "returns 'a A!' if given 'z Z! with shift of 1" do
+        expect(subject.caesar_cipher('z Z!', 1)).to eql 'a A!'
+      end
+
+      it "returns 'Bmfy f xywnsl!' given 'What a string! with shift of 5" do
+        expect(subject.caesar_cipher('What a string!', 5)).to eql 'Bmfy f xywnsl!'
+      end
     end
   end
 end

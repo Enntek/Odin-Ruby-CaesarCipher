@@ -5,40 +5,29 @@
 # Use TDD to create this solution
 class CaesarCipher
   def caesar_cipher(string, shift)
+    # A 65
+    # Z 90
+
     # a 97
     # z 122
-    # puts string.ord + shift 
-    # string.ord - 97 # this would represent letter, 1 - 26
+    # this would represent letter, 1 - 26
+    # string.ord - 97 
     # add our shift to that, then use mod operand
-    # then add back 97
-
-    # check if character is letter
-    # 
-
 
     array = string.split('')
-
     array.map do |char|
-      if char.alpha?
-        (char.ord - 97 + shift) % 26 + 97
+      if char.ord.between?(65, 90) || char.ord.between?(97, 122)
+        base = char.ord.between?(65, 90) ? 65 : 97
+        ((char.ord - base + shift) % 26 + base).chr
       else
         char
       end
-    end
-    
-    # shifted_array = array.map { |char| (char.ord - 97 + shift) % 26 + 97 }
-    # shifted_array.map(&:chr).join
-
+    end.join
   end
 
-  def alpha?(char)
-    return true if char.ord.between?(97, 122)
-
-    false
-  end
 end
 
 require 'pry-byebug'
-binding.pry
+# binding.pry
 cc = CaesarCipher.new
-puts cc.caesar_cipher('az', 1)
+puts cc.caesar_cipher('z Z!', 1)
